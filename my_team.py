@@ -109,14 +109,14 @@ class ReflexCaptureAgent(CaptureAgent):
                             getattr(agent_state, 'num_carrying', 0))
 
 
-        being_safe = 5
+        being_safe = 4
         # if the other teams agent is scared, we add as to being safe the ammount of time left divided by 4
         enemies = self.get_opponents(game_state) 
         for enemy in enemies:#enemy is the index of the enemy agent
             enemy_state = game_state.get_agent_state(enemy) #can be known
             if not enemy_state.is_pacman: #enemy hasn't crossed, it is defending its side
                 if enemy_state.scared_timer > 0: #enemy is scared we can risk more and collect more food
-                    being_safe += enemy_state.scared_timer // 4
+                    being_safe += enemy_state.scared_timer // 8
                 else: #if the enemy is an active ghost trying to eat us, we only know where it is f it is closer than 5 units
                       #so if we know where it is, we have to be more careful
                     if game_state.get_agent_position(enemy) is not None:
@@ -325,12 +325,12 @@ class OffensiveReflexAgent(ReflexCaptureAgent):
                 'distance_to_food': -3,
                 'distance_to_capsule': -8,
                 'min_ghost_distance': 200,
-                'close_scared_ghost': -20,
+                'close_scared_ghost': 0,
                 'food_carried': 0,
                 'distance_to_home': -home_priority,
                 'stop': -300,
                 'eaten_capsule': 500,
-                'eaten_scared_ghost': 300,
+                'eaten_scared_ghost': 30,
                 'imminent_danger': -5000
             }
             
