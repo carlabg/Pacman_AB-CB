@@ -377,7 +377,7 @@ class OffensiveReflexAgent(ReflexCaptureAgent):
                 'distance_to_capsule': -50,
                 'min_ghost_distance': 100,
                 'close_scared_ghost': -150,
-                'food_carried': 0,
+                'food_carried': 2,
                 'distance_to_home': -5,
                 'stop': -200,
                 'eaten_capsule': 900,
@@ -535,5 +535,4 @@ class DefensiveReflexAgent(ReflexCaptureAgent):
                 'on_own_side': 3,
                 'distance_to_our_food': -3
             }
-
 
