@@ -116,7 +116,7 @@ class ReflexCaptureAgent(CaptureAgent):
             enemy_state = game_state.get_agent_state(enemy) #can be known
             if not enemy_state.is_pacman: #enemy hasn't crossed, it is defending its side
                 if enemy_state.scared_timer > 0: #enemy is scared we can risk more and collect more food
-                    being_safe += enemy_state.scared_timer // 6
+                    being_safe += enemy_state.scared_timer // 4
                 else: #if the enemy is an active ghost trying to eat us, we only know where it is f it is closer than 5 units
                       #so if we know where it is, we have to be more careful
                     if game_state.get_agent_position(enemy) is not None:
@@ -377,7 +377,7 @@ class OffensiveReflexAgent(ReflexCaptureAgent):
                 'distance_to_capsule': -50,
                 'min_ghost_distance': 100,
                 'close_scared_ghost': -150,
-                'food_carried': 2,
+                'food_carried': 0,
                 'distance_to_home': -5,
                 'stop': -200,
                 'eaten_capsule': 900,
@@ -535,4 +535,3 @@ class DefensiveReflexAgent(ReflexCaptureAgent):
                 'on_own_side': 3,
                 'distance_to_our_food': -3
             }
-
